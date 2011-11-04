@@ -1,2 +1,2 @@
-class Spades
-end
+require "spades/deck"
+require "spades/game"
