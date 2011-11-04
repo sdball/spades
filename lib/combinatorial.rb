@@ -1,7 +1,8 @@
 module Math
   def self.factorial(n)
     return n if 1 == n
-    n.downTo(1)
+    return n if 2 == n
+    (2..n).inject(:*)
   end
 
   def self.choose(x,y)
