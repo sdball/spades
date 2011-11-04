@@ -1,5 +1,5 @@
 task :default => [:test]
 
 task :test do
-  ruby "test/minitest.rb"
+  ruby "test/test_helper.rb"
 end
