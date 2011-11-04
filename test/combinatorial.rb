@@ -14,4 +14,9 @@ class TestCombinatorial < MiniTest::Unit::TestCase
     end
   end
 
+  def bench_factorial
+    assert_performance_linear do |n| # n is a range value
+      Math.factorial(n)
+    end
+  end
 end
