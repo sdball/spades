@@ -1,4 +1,25 @@
 module Spades
+  RANKS = {
+    '2' => 2,
+    '3' => 3,
+    '4' => 4,
+    '5' => 5,
+    '6' => 6,
+    '7' => 7,
+    '8' => 8,
+    '9' => 9,
+    '10' => 10,
+    'j' => 11,
+    'q' => 12,
+    'k' => 13,
+    'a' => 14
+  }
+  SUITS = {
+    'c' => 1,
+    'h' => 0,
+    'd' => 0,
+    's' => 10
+  }
   ## Spades::Card
   #
   # A card in the game of Spades.
@@ -18,20 +39,6 @@ module Spades
   # => true
   class Card
     include Comparable
-
-    RANKS = {
-      'j' => 11,
-      'q' => 12,
-      'k' => 13,
-      'a' => 14
-    }
-    SUITS = {
-      'c' => 1,
-      'h' => 0,
-      'd' => 0,
-      's' => 10
-    }
-
     def initialize(card)
       @rank, @suit = card.downcase.split('')
     end
@@ -45,7 +52,7 @@ module Spades
     end
 
     def numeric_rank
-      RANKS[@rank] || @rank.to_i
+      RANKS[@rank]
     end
 
     def numeric_suit

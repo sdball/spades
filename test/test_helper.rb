@@ -1,4 +1,6 @@
 require 'minitest/benchmark'
 require 'minitest/autorun'
 require './test/combinatorial.rb'
+require './test/spades.rb'
 require './test/spades_card.rb'
+require './test/spades_deck.rb'
