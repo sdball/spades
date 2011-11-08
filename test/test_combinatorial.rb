@@ -1,4 +1,4 @@
-require './lib/combinatorial.rb'
+require 'combinatorial'
 
 class TestCombinatorial < MiniTest::Unit::TestCase
   def test_factorial

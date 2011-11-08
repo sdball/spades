@@ -1,5 +1,10 @@
+require 'rake/testtask'
+
 task :default => [:test]
 
-task :test do
-  ruby "test/test_helper.rb"
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/test_helper.rb']
+  t.warning = true
+  t.verbose = true
 end

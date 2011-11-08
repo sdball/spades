@@ -1,4 +1,4 @@
-require './lib/spades/card.rb'
+require 'spades/card'
 
 class TestSpadesCard < MiniTest::Unit::TestCase
   def setup

@@ -1,4 +1,4 @@
-require './lib/spades/deck.rb'
+require 'spades/deck'
 
 class TestSpadesCard < MiniTest::Unit::TestCase
   def test_deck_not_divisible_by_four_is_rejected

@@ -1,6 +1,6 @@
-require './lib/spades.rb'
+require 'spades'
 
-class TestSpades < MiniTest::Unit::TestCase
+class TestSpadesGame < MiniTest::Unit::TestCase
   def test_high_club_wins
     trick = create_cards('2c', '3c', '4c', '5c')
     assert_equal(Spades::Card.new('5c'), Spades.winning_card(trick))
