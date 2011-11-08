@@ -29,6 +29,16 @@ class TestSpadesGame < MiniTest::Unit::TestCase
     assert_equal(Spades::Card.new('2c'), Spades.next_play(deck))
   end
 
+  def test_hearts_or_diamonds_before_spades
+    hand = create_cards('2h', 'ah', 'ad', '10d', '5s', 'as')
+    refute_equal('s', Spades.next_play(hand).suit)
+  end
+
+  def test_next_play_with_only_spades
+    hand = create_cards('5s', '3s', '2s')
+    assert_equal(Spades::Card.new('2s'), Spades.next_play(hand))
+  end
+
   def create_cards(*cards)
     cards.map { |card| Spades::Card.new(card) }
   end
