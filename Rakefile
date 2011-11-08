@@ -15,6 +15,7 @@ task :odds do |t|
   $LOAD_PATH << './lib'
   require 'spades'
   require 'combinatorial'
+
   cards = ENV['cards'] ? ENV['cards'].to_i : 8
   decks = ENV['decks'] ? ENV['decks'].to_i : 100
   winning_cards = Hash.new(0)
@@ -33,6 +34,4 @@ task :odds do |t|
     puts "#{rank}c:\t%.2f (observed)" % (winning_cards["#{rank}c".to_sym] / decks.to_f)
   end
   puts "spade:\t%.2f (observed)" % (winning_cards["2s".to_sym] / decks.to_f)
-
 end
-
