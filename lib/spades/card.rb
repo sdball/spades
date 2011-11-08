@@ -42,7 +42,12 @@ module Spades
     attr_reader :rank, :suit
 
     def initialize(card)
-      @rank, @suit = card.downcase.split('')
+      m = card.scan(/^(\d{1,2}|\w)(\w)$/)
+      if m[0]
+        @rank, @suit = m[0].first, m[0].last
+      else
+        raise ArgumentError, "Invalid card."
+      end
     end
 
     def <=>(other)
