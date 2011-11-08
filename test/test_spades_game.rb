@@ -24,6 +24,11 @@ class TestSpadesGame < MiniTest::Unit::TestCase
     end
   end
 
+  def test_lowest_club_is_next_play
+    deck = Spades.deck(8)
+    assert_equal(Spades::Card.new('2c'), Spades.next_play(deck))
+  end
+
   def create_cards(*cards)
     cards.map { |card| Spades::Card.new(card) }
   end
