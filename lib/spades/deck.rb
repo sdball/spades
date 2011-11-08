@@ -1,6 +1,4 @@
 module Spades
-  class ArgumentError < Exception; end
-
   ## Spades.deck
   #
   # Creates an array of Spades::Card.
