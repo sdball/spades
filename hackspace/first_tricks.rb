@@ -1,3 +1,4 @@
+require 'pp'
 ##
 # Hacked together script of experimentation
 # Left here for posterity
@@ -8,11 +9,23 @@ module Spades
   end
 
   def self.next_play(hand)
-    hand.sort!
+    clubs = []
+    hearts = []
+    diamonds = []
+    spades = []
     hand.each do |card|
-      return card if card.value > 0
+      clubs << card if card.suit == 'c'
+      hearts << card if card.suit == 'h'
+      diamonds << card if card.suit == 'd'
+      spades << card if card.suit == 's'
     end
-    return hand.first
+    if clubs.length > 0
+      return clubs.sort.first
+    elsif spades.length == hand.length
+      return spades.sort.first
+    else
+      return hand.sort.first
+    end
   end
 
   class Card
@@ -64,6 +77,7 @@ end
 if $0 == __FILE__
   c2 = Spades::Card.new('2c')
   c3 = Spades::Card.new('3c')
+  s = Spades::Card.new('2s')
   played = 0
   won = 0
   all_clubs = 0
@@ -81,34 +95,30 @@ if $0 == __FILE__
     Spades::Card.new('3s'),
     # Spades::Card.new('4s')
   ]
+  first_tricks = Hash.new(0)
   deck.combination(2) do |hand1|
     (deck - hand1).combination(2) do |hand2|
       (deck - hand1 - hand2).combination(2) do |hand3|
         hand4 = deck - hand1 - hand2 - hand3
-        if hand1.sort == [c2, c3] or hand2.sort == [c2, c3] or hand3.sort == [c2, c3] or hand4.sort == [c2, c3]
-          all_clubs += 1
-        end
         played += 1
         trick = []
         trick << Spades.next_play(hand1)
         trick << Spades.next_play(hand2)
         trick << Spades.next_play(hand3)
         trick << Spades.next_play(hand4)
-        if Spades.winner(trick) == c3
-          puts "hand1: #{hand1}"
-          puts "hand2: #{hand2}"
-          puts "hand3: #{hand3}"
-          puts "hand4: #{hand4}"
-          puts "trick: #{trick}"
-          puts
+        first_tricks[trick.sort] += 1
+        if Spades.winner(trick) == s
+          # puts "hand1: #{hand1}"
+          # puts "hand2: #{hand2}"
+          # puts "hand3: #{hand3}"
+          # puts "hand4: #{hand4}"
+          # puts "trick: #{trick}"
+          # puts
           won += 1
         end
       end
     end
   end
-  puts "\n"
-  puts won
-  puts played
-  puts won.to_f / played
-  puts all_clubs
+  pp first_tricks
+  puts first_tricks.length
 end
