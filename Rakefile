@@ -30,6 +30,7 @@ task :odds do |t|
     winning_cards[Spades.winning_card(trick).to_sym] += 1
   end
 
+  puts "Observed #{decks} decks with #{cards} cards each"
   Spades::RANKS.keys.each do |rank|
     puts "#{rank}c:\t%.2f (observed)" % (winning_cards["#{rank}c".to_sym] / decks.to_f)
   end
