@@ -39,6 +39,8 @@ module Spades
   # => true
   class Card
     include Comparable
+    attr_reader :rank, :suit
+
     def initialize(card)
       @rank, @suit = card.downcase.split('')
     end
