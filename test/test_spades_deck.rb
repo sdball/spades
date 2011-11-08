@@ -24,4 +24,11 @@ class TestSpadesCard < MiniTest::Unit::TestCase
     assert_equal(8, deck.length)
     assert_equal(deck, gen_deck)
   end
+
+  # it's theoretically possible for this test to generate a false failure
+  # if it happens when you run these tests you should go play the lottery
+  def test_shuffled_deck
+    shuffled = Spades.deck(52, true)
+    refute_equal(Spades.deck(52), shuffled)
+  end
 end
