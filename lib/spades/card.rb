@@ -25,7 +25,7 @@ module Spades
   # A card in the game of Spades.
   #
   # Essentially just wrappers to evaluate card string representations.
-  # Cards are initialized as two character strings: rack and suit.
+  # Cards are initialized as two character strings: rank and suit.
   # Possible suits: c, h, d, s
   # Possible ranks: 2, 3, 4, 5, 6, 7, 8, 9, 10, j, q, k, a
   # 
