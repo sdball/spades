@@ -1,4 +1,4 @@
-# Spades Probability Calculations
+# Spades Probability Calculations [![Build Status](https://secure.travis-ci.org/sdball/spades.png)](http://travis-ci.org/sdball/spades)
 
 ## Purpose
 
